@@ -5,6 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import Home from './Home';
 import Code from './Code';
+import Store from './Store';
 import Settings from './Settings';
 
 import { Icon } from '../ui/unit';
@@ -27,7 +28,7 @@ const screenOptions = ({ route }) => ({
       iconName = 'code-slash-outline';
     } else if (route.name === "Settings") {
       iconName = 'settings-outline';
-    } else if (route.name === "Cart") {
+    } else if (route.name === "Store") {
       iconName = 'cart-outline';
     }
     return <Icon name={iconName} color={color} />
@@ -47,7 +48,7 @@ export default function App() {
         <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions}>
           <Tab.Screen name="Home" component={Home} />
           <Tab.Screen name="Code" component={Code} />
-          <Tab.Screen name="Cart" component={Code} />
+          <Tab.Screen name="Store" component={Store} />
           <Tab.Screen name="Settings" component={Settings} />
         </Tab.Navigator>
       </NavigationContainer>
