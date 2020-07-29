@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 export default function SettingStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Settings" component={Settings} options={{ header: (props) => <Header {...props} />}}/>
+      <Stack.Screen name="Settings" component={Settings} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
 }
