@@ -10,6 +10,7 @@ import Store from './Store';
 import Settings from './Settings';
 
 import { Icon, Lottie } from '../ui/unit';
+import { HomeIcon, StoreIcon, GearIcon } from '../ui/tab-icon';
 import { grey, purple } from '../ui/color';
 
 // const Tab = createBottomTabNavigator();
@@ -26,13 +27,15 @@ const screenOptions = ({ route, ...another }) => ({
     let iconName;
     if (route.name === "Home") {
       iconName = 'home-outline';
+      return <HomeIcon color={color} play={another.navigation.isFocused()} />
     } else if (route.name === "Code") {
       iconName = 'code-slash-outline';
     } else if (route.name === "Settings") {
       iconName = 'settings-outline';
+      return <GearIcon color={color} play={another.navigation.isFocused()} />
     } else if (route.name === "Store") {
       iconName = 'cart-outline';
-      return <Lottie color={color} play={another.navigation.isFocused()} />
+      return <StoreIcon color={color} play={another.navigation.isFocused()} />
     }
     
     return <Icon name={iconName} color={color} size={20} />
@@ -45,8 +48,8 @@ const tabBarOptions = {
   inactiveTintColor: grey[500],
   labelStyle: {
     borderWidth: 1
-  }
-  // showLabel: false
+  },
+  showLabel: false
 };
 
 // material bottom options
@@ -54,6 +57,8 @@ const materialTabBarOptions = {
   barStyle: {
     backgroundColor: '#fff'
   },
+  shifting: false,
+  labeled: false,
   activeColor: purple[500],
   inactiveColor: grey[500],
 }
@@ -63,7 +68,7 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <NavigationContainer theme={theme}>
-        <Tab.Navigator screenOptions={screenOptions} shifting tabBarOptions={tabBarOptions} {...materialTabBarOptions}>
+        <Tab.Navigator screenOptions={screenOptions} tabBarOptions={tabBarOptions} {...materialTabBarOptions}>
           <Tab.Screen name="Home" component={Home} />
           <Tab.Screen name="Code" component={Code} />
           <Tab.Screen name="Store" component={Store} />

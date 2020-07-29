@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import LottieView from 'lottie-react-native';
 
-function Lottie({ focused, color, play, source }) {
+function Store({ focused, color, play }) {
   const lottie = useRef(null);
 
   useEffect(() => {
@@ -19,16 +19,15 @@ function Lottie({ focused, color, play, source }) {
   ,
   ]
 
-  // source={require('../../../public/lottie/cart.json')} 
   return (
     <LottieView
       ref={lottie}
-      source={source}
-      style={{ width: 27, height: 27 }}
+      source={require('../../../public/lottie/cart.json')} 
+      style={{ width: 30, height: 30 }}
       colorFilters={colorFilters}  
       loop={false}
     />
   );
 }
 
-export default Lottie;
+export default Store;
